@@ -27,7 +27,7 @@ def question(n):
 	A = random.randint(start, end)
 	B = random.randint(start, end)
 
- 
+
    	print ""
 
 	if add:
@@ -42,7 +42,7 @@ def question(n):
 		print " - " + str(B)
 		print "------"
 		print " = "
-	
+
 	print ""
 
 	ans = "hi!"
@@ -51,26 +51,26 @@ def question(n):
 
 	if add: correct = A+B
 	else: correct = A
-	
+
 	if int(ans) == correct:
 		return True
 	else:
 		print "Sorry, the correct answer is " + str(correct)
 		return False
-	
+
 ###### Quiz ######
 def quiz(n):
 	print "\033c"
 	print "-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	print "You choose " + quizzes[int(n)-1] + ". Try to get three in a row!"
 	print "-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	
+
 
 	i = 0
 	while i < 3:
 		i += 1
 		if question(n):
-			if i == 3: 
+			if i == 3:
 				students[name][int(n)] = 1
 				print ""
 				print "CONGRATUALTIONS! You got three correct answers in a row!"
@@ -78,7 +78,7 @@ def quiz(n):
 				raw_input("Press ENTER to continue")
 			elif i == 1: print "Good job! You got " + str(i) + " correct answer! Try another!"
 			else: print "Good job! You got " + str(i) + " correct answers! Try another!"
-		else:	
+		else:
 			print "That's okay. Let's try again!"
 			raw_input("Press ENTER to continue")
 			print "\033c"
@@ -106,7 +106,7 @@ def matching():
 	print "	|   4. division	    5. arithmetic       6. digit            |"
 	print "	|                                                           |"
 	print "	-------------------------------------------------------------"
-	print ""	
+	print ""
 
 	i = 0
 	mylist = []
@@ -216,7 +216,7 @@ for key in students:
 		print "Welcome back, " + name + "!"
 		print "Please enter your password: "
 		pwd = raw_input()
-		check = 0 
+		check = 0
 		while check == 0:
 			if pwd == students[name][0]:
 				print "Thank you"
@@ -282,10 +282,10 @@ while k:
 		print ""
 		break
 
-# For trouble shooting. Will print the current student's information 	
+# For trouble shooting. Will print the current student's information
 	elif ans == "100":
 		print students[name]
-	
+
 
 
 
