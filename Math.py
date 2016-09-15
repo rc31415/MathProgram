@@ -2,8 +2,8 @@ import random
 import csv
 import pickle
 
-##### Save the dictionary "Students" to file ######
-def save():
+##### Save the dictionary "Students" to file ###### <-- Very good intuition here! Each of your commented descriptions of what each function is doing should actually be written as a docstring between the def function_name(): and the function iteself.  The formatting is important because sometimes you want to print what the function does and there it is, in a format that is expected.  You can learn more about formatting your code by reading a bit about the Python styleguide (PEP8)
+def save(): ### I recommend being more specific in your naming. For now, this makes perfect sense since it's the only fcn that saves, but what if the program grows or a new person (like me) is reading your code and wants to know what is being saved with minimual effort? What is your game grows and I don't want to remember as I am reading line 257 what the save function which is defined on line 10 or so does?  It's easier if you make it clear.
 	output = open('math.pk1', 'wb')
 	pickle.dump(students, output)
 	output.close()
@@ -13,7 +13,7 @@ def question(n):
 	if (n == '1') or (n == '2'):
 		add = True
 		subtract = False
-	elif (n == '3') or (n == '4'):
+	elif (n == '3') or (n == '4'): # isn't the actual question below and this bit above something that should be fed into the question?  Is this a time for classes?
 		add = False
 		subtract = True
 
@@ -24,14 +24,14 @@ def question(n):
 		start = 10
 		end = 99
 
-	A = random.randint(start, end)
+	A = random.randint(start, end) # think if make more sense as a global or local variable
 	B = random.randint(start, end)
+### Convert tabs to spaces at the lower corner of your sublime window. Because there are no curly braces in Python, the easiest way to know how indented something is is with the spaces (http://stackoverflow.com/questions/13884499/what-is-python-whitespace-and-how-does-it-work)
 
- 
    	print ""
 
 	if add:
-		print "   " + str(A)
+		print "   " + str(A) # is there some classier way of doing the printing of many lines in a block like that?
 		print " + " + str(B)
 		print "------"
 		print " = "
@@ -42,35 +42,35 @@ def question(n):
 		print " - " + str(B)
 		print "------"
 		print " = "
-	
+
 	print ""
 
-	ans = "hi!"
+	ans = "hi!" # ans doesn't make any sense, is it a placeholder? is it just cute? maybe give it a comment if you want to keep it so it doesn't make any sense to a reader?
 	while ans.isdigit() == False:
-		ans = raw_input("What is your answer? ")
+		ans = raw_input("What is your answer? ") # OH ans is renamed here. I see, the first ans is a test.  If it doesn't change, the user hasn't put in anything.  Maybe I should suggest this be removed and point person to information about testing.
 
 	if add: correct = A+B
 	else: correct = A
-	
+
 	if int(ans) == correct:
 		return True
 	else:
 		print "Sorry, the correct answer is " + str(correct)
 		return False
-	
+
 ###### Quiz ######
 def quiz(n):
 	print "\033c"
 	print "-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
 	print "You choose " + quizzes[int(n)-1] + ". Try to get three in a row!"
 	print "-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
-	
+
 
 	i = 0
 	while i < 3:
 		i += 1
 		if question(n):
-			if i == 3: 
+			if i == 3:
 				students[name][int(n)] = 1
 				print ""
 				print "CONGRATUALTIONS! You got three correct answers in a row!"
@@ -78,7 +78,7 @@ def quiz(n):
 				raw_input("Press ENTER to continue")
 			elif i == 1: print "Good job! You got " + str(i) + " correct answer! Try another!"
 			else: print "Good job! You got " + str(i) + " correct answers! Try another!"
-		else:	
+		else:
 			print "That's okay. Let's try again!"
 			raw_input("Press ENTER to continue")
 			print "\033c"
@@ -106,7 +106,7 @@ def matching():
 	print "	|   4. division	    5. arithmetic       6. digit            |"
 	print "	|                                                           |"
 	print "	-------------------------------------------------------------"
-	print ""	
+	print ""
 
 	i = 0
 	mylist = []
@@ -177,7 +177,7 @@ def score(n):
 ###### Start of the program itself ######
 
 ## List quizzes
-quizzes = ["single digit addition",
+quizzes = ["single digit addition",  ### I would recommend making your file more readable (300 lines is a lot!) by putting all of the functions you have associated with the quiz types and put them in a seperate file which you import at the top of this file.
 			"double digit addition",
 			"one digit subtraction",
 			"two digit subtraction",
@@ -216,7 +216,7 @@ for key in students:
 		print "Welcome back, " + name + "!"
 		print "Please enter your password: "
 		pwd = raw_input()
-		check = 0 
+		check = 0
 		while check == 0:
 			if pwd == students[name][0]:
 				print "Thank you"
@@ -276,16 +276,16 @@ while k:
 			matching()
 
 # SAVE AND EXIT
-	elif ans == "3":
+	elif ans == "3": ## for future: what if the user wants to save at some point other than you have offered it?
 		save()
 		print "Your work has been saved"
 		print ""
 		break
 
-# For trouble shooting. Will print the current student's information 	
-	elif ans == "100":
+# For trouble shooting. Will print the current student's information
+	elif ans == "100": ## is this something teachers will know? will the student know? tell them in the game or in the readme!
 		print students[name]
-	
+
 
 
 
